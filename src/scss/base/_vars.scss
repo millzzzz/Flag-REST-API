@@ -3,17 +3,30 @@
 */
 
 /* Typography */
+$homepage-items: 14px;
+$detail-page: 16px;
+
 /* Breakpoints */
+
 /* Paths */
 /* Grid setup */
-/* Colour palette */
-$black: #000;
-$white: #fff;
 
-$body-background-color: #333;
-$foreground-color: #fff;
-$caption-color: #464646;
-$accent-color: #999;
-$link-color: #ec1f4e;
+/* Colour palette */
+// Dark Blue
+$dark-mode-elements: hsl(209, 23%, 22%);
+
+// Very Dark Blue
+$dark-mode-background: hsl(207, 26%, 17%);
+
+// Very Dark Blue
+$light-mode-text: hsl(200, 15%, 8%);
+
+// Dark Gray 
+$light-mode-input: hsl(0, 0%, 52%);
+
+// Very Light Gray 
+$light-mode-background: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
+$black: #000000	;
 
 /* Components */

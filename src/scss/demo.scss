@@ -1,40 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
 body {
-  background: $body-background-color;
-  color: $foreground-color;
-  font-family: 'DINP-R', arial, serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
-header {
-  font-size: 2em;
-  margin: 20px;
-  color: $caption-color;
-  text-align: center;
-  background: $foreground-color url('../images/design/heading.png') center 20px no-repeat;
-  padding: 60px 30px 30px;
-  background-size: 160px;
+h1 {
+    font-size: $homepage-items;
+    font-weight: $weight-800;
 }
 
-main {
-  color: $foreground-color;
-  text-align: center;
-  padding: 10px;
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+    &__dark-mode--paragraph {
+        display: inline-block;
+    }
+
 }
 
-.badges {
-  img {
-    display: inline;
-  }
-}
+.main {
+    &__search-box {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+    }
 
-a {
-  color: $link-color;
-}
+    #flag-search{
+        flex-grow: 1;
+        margin-left: 10px;
+    }
 
-address {
-  color: $accent-color;
-}
+    &__flags{
+        display: flex;
+        flex-direction: column;
+    }
 
-.logo {
-  margin: 0 auto;
-  display: block;
+    &__flags--child{
+        margin: 50px;
+        border: 1px solid black;
+    }
+
+    .content{
+        padding: 20px;
+    }
 }
