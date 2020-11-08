@@ -1,43 +1,65 @@
-const queryCall = "https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital";
+// fetch flag picture, country, population, region and capital
+/* eslint-disable */
+function createElements() {
+  fetch(
+    'https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital',
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      let i = 0;
+      while (i < 8) {
+        let randomNumber = Math.ceil(Math.random() * data.length);
 
+        // **how to check whether we are at the end or not? -> maybe create an array with the numbers and pick one on arndom
+        const previousArray = [];
+        previousArray.push(randomNumber);
+        if (previousArray.includes(randomNumber)) {
+          randomNumber = Math.ceil(Math.random() * data.length);
+        }
 
-// fetch('https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital')
-//     .then(res => res.json())
-//     .then(data => console.log(data));
+        const url = data[randomNumber].flag;
+        const country = data[randomNumber].name;
+        const { population } = data[randomNumber];
+        const { region } = data[randomNumber];
+        const { capital } = data[randomNumber];
 
-
-// fetch('https://restcountries.eu/rest/v2/all?fields=flag')
-//     .then(res => res.blob())
-//     .then(blob => {
-//         let img = document.createElement('img');
-//         img.setAttribute("src", blob);
-//         img.width = "100%";
-//         img.height = "100%";
-//         document.getElementsByClassName('flag-div').appendChild('img');
-//     });
-
-
-fetch('https://restcountries.eu/rest/v2/all?fields=flag')
-    .then(res => res.json())
-    .then(data => {
-        console.log(data[0].flag) // Prints result from `response.json()` in getRequest
-        //   Object.keys(data).forEach((key) => {
-        //     const div = document.querySelector('flag-div');
-        //     var img = document.createElement("img");
-        //     img.setAttribute("src", data[0]);
-        //     div.appendChild(img);
-        //     //append ele to parent div
-        //   });
-        let img = document.createElement('img');
-        img.src = data[0].flag;
-        document.getElementById('flag-div').appendChild('img');
+        const flexChild = document.createElement('div');
+        flexChild.className = 'main__flags--child';
+        flexChild.innerHTML = `
+                <div class="flag-div"><img class="flag-img" src="${url}" width="100%" height="100%" alt="flag">
+                </div>
+                 <div class="content">
+                 <h1 style="padding: 15px 0;">${country}</h1>
+                <p>Population: ${population}</p>
+                <p>Region: ${region}</p>
+                <p>Capital: ${capital}</p>
+                </div>`;
+        // eslint-disable-next-line no-undef
+        document
+          .querySelector('div.main__flags')
+          .appendChild(flexChild);
+        i += 1;
+      }
     })
-    .catch(error => console.error(error))
+    .catch((error) => console.error(error));
+}
 
+// function filterByRegion() {}
+// function search() {}
 
+// eslint-disable-next-line no-undef
+window.onload = createElements;
+window.onscroll = function () {
+  if (
+    window.innerHeight + window.scrollY >=
+    document.body.offsetHeight
+  ) {
+    // if we happen to be at the end, then just disable it
+    createElements();
+  }
+};
 /**
- * TODO: Fetch data from the api call to display picture and other info - random? 
- * TODO: Do it on load, for 8 countries
- * TODO: figure out how to do the loading thingy? - scroll down and load or what
- *
+ * TODO: don't show the same anymore - parse them into an array and if the array includes then create a new random number
+ * TODO: setup Beautify
+ * TODO: You can infinitively scroll up or down
  */

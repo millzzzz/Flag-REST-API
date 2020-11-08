@@ -1,40 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>Where in the world?</title>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Where in the world?</title>
-</head>
-
-<body>
-  <header class="navbar">
-    <h1 class="navbar__title">Where in the world?</h1>
-    <div class="navbar__dark-mode" style="display: flex; align-items: center; justify-content: space-around; width: 100px;">
-      <ion-icon name="moon-outline"></ion-icon>
-      <p class="navbar__dark-mode--paragraph">Dark Mode</p>
-    </div>
-  </header>
-  <div class="main">
-    <div class="main__search-box">
-      <ion-icon name="search-outline"></ion-icon>
-      <input type="search" id="flag-search" name="flag-search">
-    </div>
-    <div class="main__dropdown"></div>
-    <div class="main__flags">
-      <div class="main__flags--child">
-          <div id="flag-div"></div>
-          <!-- <img class="flag-img" src="" width="100%" height="100%" alt="flag"> -->
-          <div class="content">
-            <h1 style="padding: 15px 0;"><span></span>Country</h1>
-            <p>Population: <span></span></p>
-            <p>Region: <span></span></p>
-            <p>Capital: <span></span></p>
-          </div>
+  <body>
+    <header class="navbar">
+      <h1 class="navbar__title">Where in the world?</h1>
+      <div
+        class="navbar__dark-mode"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          width: 100px;
+        "
+      >
+        <ion-icon name="moon-outline"></ion-icon>
+        <p class="navbar__dark-mode--paragraph">Dark Mode</p>
+      </div>
+    </header>
+    <div class="main">
+      <div class="main__search-box">
+        <ion-icon name="search-outline"></ion-icon>
+        <input
+          type="search"
+          id="flag-search"
+          name="flag-search"
+          placeholder="Search for a contry..."
+        />
+        <!-- search by name -->
+      </div>
+      <select class="main__dropdown">
+        <option>Filter by Region</option>
+        <option>Africa</option>
+        <option>America</option>
+        <option>Asia</option>
+        <option>Europe</option>
+        <option>Oceania</option>
+      </select>
+      <div class="main__flags">
+        <!-- <div class="main__flags--child">
+        <div class="flag-div"><img class="flag-img" src="" width="100%" height="100%" alt="flag"></div>
+        <div class="content">
+          <h1 style="padding: 15px 0;">HTML<span id="flag-country"></span></h1>
+          <p>Population: <span id="flag-population"></span></p>
+          <p>Region: <span id="flag-region"></span></p>
+          <p>Capital: <span id="flag-capital"></span></p>
+        </div>
+      </div> -->
       </div>
     </div>
-  </div>
-  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-</body>
-
+  </body>
 </html>

@@ -1,49 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
 body {
-    font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 h1 {
-    font-size: $homepage-items;
-    font-weight: $weight-800;
+  font-size: $homepage-items;
+  font-weight: $weight-800;
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 
-    &__dark-mode--paragraph {
-        display: inline-block;
-    }
-
+  &__dark-mode--paragraph {
+    display: inline-block;
+  }
 }
 
 .main {
-    &__search-box {
-        display: flex;
-        align-items: center;
-        padding: 20px;
-    }
+  &__search-box {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
 
-    #flag-search{
-        flex-grow: 1;
-        margin-left: 10px;
-    }
+  #flag-search {
+    flex-grow: 1;
+    margin-left: 10px;
+  }
 
-    &__flags{
-        display: flex;
-        flex-direction: column;
-    }
+  &__dropdown {
+    margin: 20px;
+  }
 
-    &__flags--child{
-        margin: 50px;
-        border: 1px solid black;
-    }
+  &__flags {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .content{
-        padding: 20px;
+  &__flags--child {
+    margin: 50px;
+    border: 1px solid black;
+  }
+
+  .content {
+    padding: 20px;
+
+    .flag-population {
+      padding: 15px 0;
     }
+  }
 }

@@ -2,17 +2,14 @@
 
 ### TODO:
 
-
 - create frontend skeleton, responsiveness
 - import fonts, decide on layout
 - Navigation:
-dark mode
+  dark mode
 - fetch REST API
 
-
-
 Hard tasks:
-*to sort out the component system*, search bar, 
+_to sort out the component system_, search bar,
 
 how to not use a framework for components?
 
