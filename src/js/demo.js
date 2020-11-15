@@ -1,4 +1,22 @@
 /* eslint-disable */
+const dropDown = document.querySelector('.main__dropdown');
+dropDown.addEventListener('change', function () {
+  refreshcCountries();
+  if (this.value == '') {
+    fetchData('https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital')
+  } else if (this.value == 'africa') {
+    fetchData('https://restcountries.eu/rest/v2/region/africa');
+  } else if (this.value == 'americas') {
+    fetchData('https://restcountries.eu/rest/v2/region/americas');
+  } else if (this.value == 'asia') {
+    fetchData('https://restcountries.eu/rest/v2/region/asia');
+  } else if (this.value == 'europe') {
+    fetchData('https://restcountries.eu/rest/v2/region/europe');
+  } else if (this.value == 'oceania') {
+    fetchData('https://restcountries.eu/rest/v2/region/oceania');
+  }
+}, false);
+
 function shuffle(array) {
   var i = array.length,
     j = 0,
@@ -13,10 +31,9 @@ function shuffle(array) {
   return array;
 }
 
-function fetchData() {
-  //I have to separate the fetching part
+function fetchData(urlLink) {
   fetch(
-      'https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital',
+      urlLink,
     )
     .then((res) => res.json())
     .then((data) => {
@@ -26,7 +43,7 @@ function fetchData() {
     .catch((error) => console.error(error));
 }
 
-function createElements(data){
+function createElements(data) {
   for (obj of data) {
     const url = obj.flag;
     const country = obj.name;
@@ -51,28 +68,16 @@ function createElements(data){
   }
 }
 
-// }
-// function filterByRegion() {}
-// function search() {}
-
-// function sortByAfrica(data) {
-//   data.sort(function (a, b) {
-//     return parseFloat(a.price) - parseFloat(b.price);
-//   });
-//   console.log(sortArray.sort((a, b) => {
-//     if (a.region < b.region)
-//       return -1;
-//     if (a.region > b.region)
-//       return 1;
-//     return 0;
-//   }));
-// }
+function refreshcCountries() {
+  var elements = document.getElementsByClassName('main__flags--child');
+  while (elements.length > 0) {
+    elements[0].parentNode.removeChild(elements[0]);
+  }
+}
 
 // eslint-disable-next-line no-undef
-window.onload = fetchData;
+window.onload = fetchData('https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital');
 
-/**
- * TODO: don't show the same anymore - parse them into an array and if the array includes then create a new random number
- * TODO: what would happen if you search for something that isn't generated yet though
- * TODO: You can infinitively scroll up or down
+/***
+ * !: Is it an issue to keep the same display of the countries or random is fine?
  */
