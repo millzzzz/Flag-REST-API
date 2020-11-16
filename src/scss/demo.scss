@@ -2,11 +2,24 @@
 
 body {
   font-family: 'Nunito Sans', sans-serif;
+  background-color: $light-mode-background;
 }
 
 h1 {
-  font-size: $homepage-items;
+  font-size: $detail-page;
   font-weight: $weight-800;
+}
+
+* {
+  color: $light-mode-text;
+}
+
+p {
+  font-weight: $weight-600;
+}
+
+span {
+  font-weight: $weight-300;
 }
 
 .navbar {
@@ -14,6 +27,7 @@ h1 {
   align-items: flex-start;
   justify-content: space-between;
   padding: 20px;
+  background-color: $white;
 
   &__dark-mode {
     display: flex;
@@ -24,6 +38,7 @@ h1 {
 
   &__dark-mode--paragraph {
     display: inline-block;
+    font-weight: $weight-300;
   }
 }
 
@@ -54,7 +69,10 @@ h1 {
   &__flags--child {
     flex-basis: 300px;
     margin: 60px auto;
-    border: 1px solid black;
+    border: 1px solid $white;
+    border-radius: 2%;
+    box-shadow: 5px;
+    background-color: $white;
   }
 
   .content {

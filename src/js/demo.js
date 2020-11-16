@@ -28,9 +28,9 @@ function createElements(data) {
           </div>
            <div class="content">
            <h1 class="search-country">${country}</h1>
-          <p>Population: ${population}</p>
-          <p>Region: ${region}</p>
-          <p>Capital: ${capital}</p>
+          <p>Population: <span>${population}</span></p>
+          <p>Region: <span>${region}</span></p>
+          <p>Capital: <span>${capital}</span></p>
           </div>`;
     document.querySelector('div.main__flags').appendChild(flexChild);
   });
