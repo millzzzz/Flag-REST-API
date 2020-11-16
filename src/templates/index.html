@@ -20,15 +20,7 @@
   <body>
     <header class="navbar">
       <h1 class="navbar__title">Where in the world?</h1>
-      <div
-        class="navbar__dark-mode"
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-          width: 100px;
-        "
-      >
+      <div class="navbar__dark-mode">
         <ion-icon name="moon-outline"></ion-icon>
         <p class="navbar__dark-mode--paragraph">Dark Mode</p>
       </div>
@@ -39,7 +31,6 @@
         <input
           type="search"
           id="flag-search"
-          onkeyup="searchByCountryName()"
           placeholder="Search for a contry..."
         />
       </div>

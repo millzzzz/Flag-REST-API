@@ -15,6 +15,13 @@ h1 {
   justify-content: space-between;
   padding: 20px;
 
+  &__dark-mode {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100px;
+  }
+
   &__dark-mode--paragraph {
     display: inline-block;
   }
@@ -45,13 +52,17 @@ h1 {
   // on larger devices situate it better
 
   &__flags--child {
-    flex-basis: 350px;
-    margin: 50px;
+    flex-basis: 300px;
+    margin: 60px auto;
     border: 1px solid black;
   }
 
   .content {
     padding: 20px;
+
+    .search-country {
+      padding: 15px 0;
+    }
 
     .flag-population {
       padding: 15px 0;

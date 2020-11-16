@@ -1,11 +1,9 @@
-/* eslint-disable */
 function shuffle(array) {
   let i = array.length;
   let j = 0;
   let temp;
-
-  // eslint-disable-next-line no-plusplus
-  while (i--) {
+  // eslint-disable-next-line no-cond-assign
+  while ((i -= 1)) {
     j = Math.floor(Math.random() * (i + 1));
     temp = array[i];
     // eslint-disable-next-line no-param-reassign
@@ -17,39 +15,37 @@ function shuffle(array) {
 }
 
 function createElements(data) {
-  for (obj of data) {
+  data.forEach((obj) => {
     const url = obj.flag;
     const country = obj.name;
-    const population = obj.population;
+    const { population } = obj;
     const { region } = obj;
-    const capital = obj.capital;
+    const { capital } = obj;
     const flexChild = document.createElement('div');
     flexChild.className = 'main__flags--child';
     flexChild.innerHTML = `
           <div class="flag-div"><img class="flag-img" src="${url}" width="100%" height="100%" alt="flag">
           </div>
            <div class="content">
-           <h1 style="padding: 15px 0;" class="search-country">${country}</h1>
+           <h1 class="search-country">${country}</h1>
           <p>Population: ${population}</p>
           <p>Region: ${region}</p>
           <p>Capital: ${capital}</p>
           </div>`;
-    // eslint-disable-next-line no-undef
     document.querySelector('div.main__flags').appendChild(flexChild);
-  }
+  });
 }
 
 function fetchData(urlLink) {
-  // eslint-disable-next-line no-undef
+  // eslint-disable-next-line no-console
+  const errorMessage = console.error;
   fetch(urlLink)
     .then((res) => res.json())
     .then((data) => {
-      // eslint-disable-next-line no-param-reassign
-      data = shuffle(data);
-      // eslint-disable-next-line no-use-before-define
+      shuffle(data);
       createElements(data);
     })
-    .catch((error) => console.error(error));
+    .catch((error) => errorMessage(error));
 }
 
 function refreshcCountries() {
@@ -61,26 +57,32 @@ function refreshcCountries() {
   }
 }
 
-// function searchByCountryName() {
-//   let txtValue;
-//   let filter = input.value.toUpperCase();
-//   let elements = document.querySelectorAll('.content');
+const input = document.getElementById('flag-search');
+input.addEventListener('keyup', () => {
+  let txtValue;
+  let i;
+  const filter = input.value.toUpperCase();
+  const elements = document.querySelectorAll('.content');
+  const flexChildren = document.querySelectorAll(
+    '.main__flags--child',
+  );
 
-//   //I gotta loop through flexchild items actually
-//   for (i = 0; i < elements.length; i++) {
-//     h1 = elements[i].getElementsByTagName('h1')[0];
-//     txtValue = h1.textContent || h1.innerText;
-//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//       li[i].style.display = '';
-//     } else {
-//       li[i].style.display = 'none';
-//     }
-//   }
-// }
+  for (i = 0; i < elements.length; i += 1) {
+    // eslint-disable-next-line prefer-destructuring
+    const h1 = elements[i].getElementsByTagName('h1')[0];
+    txtValue = h1.textContent || h1.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      flexChildren[i].style.display = '';
+    } else {
+      flexChildren[i].style.display = 'none';
+    }
+  }
+});
+
 const dropDown = document.querySelector('.main__dropdown');
 dropDown.addEventListener(
   'change',
-  function () {
+  () => {
     refreshcCountries();
     if (this.value === '') {
       fetchData(
@@ -101,12 +103,10 @@ dropDown.addEventListener(
   false,
 );
 
-// eslint-disable-next-line no-undef
 window.onload = fetchData(
   'https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital',
 );
 
 /** *
- * !: Is it an issue to keep the same display of the countries or random is fine?
- * TODO: Loading
+ * !: Somehow in Europe the flags are of different sizes
  */
