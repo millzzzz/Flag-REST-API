@@ -79,24 +79,24 @@ input.addEventListener('keyup', () => {
   }
 });
 
-const dropDown = document.querySelector('.main__dropdown');
+const dropDown = document.getElementById('dropdown');
 dropDown.addEventListener(
   'change',
   () => {
     refreshcCountries();
-    if (this.value === '') {
+    if (dropDown.value === '') {
       fetchData(
         'https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital',
       );
-    } else if (this.value === 'africa') {
+    } else if (dropDown.value === 'africa') {
       fetchData('https://restcountries.eu/rest/v2/region/africa');
-    } else if (this.value === 'americas') {
+    } else if (dropDown.value === 'americas') {
       fetchData('https://restcountries.eu/rest/v2/region/americas');
-    } else if (this.value === 'asia') {
+    } else if (dropDown.value === 'asia') {
       fetchData('https://restcountries.eu/rest/v2/region/asia');
-    } else if (this.value === 'europe') {
+    } else if (dropDown.value === 'europe') {
       fetchData('https://restcountries.eu/rest/v2/region/europe');
-    } else if (this.value === 'oceania') {
+    } else if (dropDown.value === 'oceania') {
       fetchData('https://restcountries.eu/rest/v2/region/oceania');
     }
   },
